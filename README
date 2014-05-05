@@ -32,4 +32,5 @@ An ebuild is included for the benefit of Gentoo users.
 -- port install opam
 -- make all
 -- ocamlmktop -cclib -Lpwd -cclib libpycaml_stubs.a -custom unix.cma str.cma pycaml.cma
+-- ocamlc -cclib -L`pwd` -cclib libpycaml_stubs.a -cus tom unix.cma str.cma pycaml.cma examples/log.ml
 -- https://docs.python.org/2.7/distutils/apiref.html for using this in your python
