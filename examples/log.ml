@@ -1,7 +1,3 @@
-#use "topfind";;
-#require "pycaml";;
-#require "snippets";;
-
 open Pycaml;;
 
 (* See http://docs.python.org/lib/module-logging.html for Level values *)
@@ -92,7 +88,7 @@ let add_logger_if_new name logger =
 let _py_register_logger =
   python_pre_interfaced_function
     ~doc:"Register a python-logger. \nArguments: Logger name (str) and callback function cb(). \nThe signature of cb() is cb( level: int, message:str). "
-    [|StringType;CallableType|]
+    [|EitherStringType;CallableType|]
     (fun py_args ->
        let name = pystring_asstring py_args.(0) in
        let ocamllogger = (fun level msg -> 
@@ -115,7 +111,10 @@ let _py_register_logger =
 (* getinfo returns an array of strings that contain the names of registered loggers. *)
 let getinfo loggers =
     let loggerarray = Array.make (Hashtbl.length loggers) "empty" in
-    let () = Snippets.hashtbl_iteri (fun i key value -> (loggerarray.(i) <- key)) loggers in
+    let loggerarray = Hashtbl.fold 
+                        (fun key _ loggers -> 
+                            Array.append loggers (Array.of_list [key]) ) 
+                        loggers loggerarray in 
     loggerarray;;
 
 let print_loggers loggers = 
@@ -124,7 +123,7 @@ let print_loggers loggers =
 let _py_ocaml_log  =
   python_pre_interfaced_function
     ~doc: "Function that calls the ocaml logger from Python (just for debugging useful) "
-    [|StringType;IntType;StringType|] ( fun py_args -> 
+    [|EitherStringType;IntType;EitherStringType|] ( fun py_args -> 
 					  let name = pystring_asstring py_args.(0) in
 					  let level = pyint_asint py_args.(1) in
 					  let msg = pystring_asstring py_args.(2) in

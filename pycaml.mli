@@ -604,9 +604,7 @@ val pyobject_richcomparebool : pyobject * pyobject * int -> int
 val pyobject_setattrstring : pyobject * string * pyobject -> int 
 val pyobject_hasattrstring : pyobject * string -> int 
 
-  IFDEF PYCAML2 THEN
 val pyobject_compare : pyobject * pyobject -> int 
-  END
 
 (* Currently not implemented.
    val pynumber_coerce : pyobject * pyobject -> (pyobject * pyobject) option
@@ -628,10 +626,8 @@ val pystring_asstringandsize : pyobject -> string (* Legacy support *)
 val pybytes_fromstring : string -> pyobject 
 val pystring_fromstring : string -> pyobject (* Legacy support *)
 
-  IFDEF PYMAJOR2 THEN
 val pybytes_format : pyobject * pyobject -> pyobject
 val pystring_format : pyobject * pyobject -> pyobject (* Legacy support *)
-  END
 
 val pyunicode_asutf8string : pyobject -> pyobject
 val pyunicode_asutf16string : pyobject -> pyobject
@@ -660,9 +656,7 @@ val pydict_setitemstring : pyobject * string * pyobject -> int
 
 val pyint_fromlong : int64 -> pyobject 
 val pyint_aslong : pyobject -> int64 
-  IFDEF PYMAJOR2 THEN
 val pyint_getmax : unit -> int64
-  END
 
 val pyfloat_fromdouble : float -> pyobject 
 val pyfloat_asdouble : pyobject -> float 
@@ -692,23 +686,15 @@ val pyerr_givenexceptionmatches : pyobject * pyobject -> int
 val pyerr_exceptionmatches : pyobject -> int 
 val pyerr_normalizeexception : pyobject * pyobject * pyobject -> pyobject * pyobject * pyobject 
 
-  IFDEF PYMAJOR2 THEN
 val pyclass_new : pyobject * pyobject * pyobject -> pyobject 
 val pyinstance_new : pyobject * pyobject * pyobject -> pyobject 
 val pyinstance_newraw : pyobject * pyobject -> pyobject
-  END
 
-  IFDEF PYMAJOR2 THEN
 val pymethod_new : pyobject * pyobject * pyobject -> pyobject 
-  ELSE
-val pymethod_new : pyobject * pyobject -> pyobject 
-  END
 
 val pymethod_function : pyobject -> pyobject 
 val pymethod_self : pyobject -> pyobject 
-  IFDEF PYMAJOR2 THEN
 val pymethod_class : pyobject -> pyobject 
-  END
 
 val pyimport_getmagicnumber : unit -> int64 
 val pyimport_execcodemodule : pyobject * string -> pyobject 
@@ -729,9 +715,7 @@ val pyeval_getglobals : unit -> pyobject
 val pyeval_getlocals : unit -> pyobject 
   (* val pyeval_getframe : unit -> pyobject  -- FIX: see comment in stubs code. *)
 
-  IFDEF PYMAJOR2 THEN
 val pyeval_getrestricted : unit -> int
-  END
 
 val pyobject_type : pyobject -> pyobject 
 val pyobject_size : pyobject -> int 
@@ -748,9 +732,7 @@ val pynumber_subtract : pyobject * pyobject -> pyobject
 val pynumber_multiply : pyobject * pyobject -> pyobject 
 val pynumber_truedivide : pyobject * pyobject -> pyobject 
 val pynumber_floordivide : pyobject * pyobject -> pyobject 
-  IFDEF PYMAJOR2 THEN
 val pynumber_divide : pyobject * pyobject -> pyobject 
-  END
 val pynumber_remainder : pyobject * pyobject -> pyobject 
 val pynumber_divmod : pyobject * pyobject -> pyobject 
 val pynumber_power : pyobject * pyobject * pyobject -> pyobject 
@@ -763,9 +745,7 @@ val pynumber_rshift : pyobject * pyobject -> pyobject
 val pynumber_and : pyobject * pyobject -> pyobject 
 val pynumber_xor : pyobject * pyobject -> pyobject 
 val pynumber_or : pyobject * pyobject -> pyobject 
-  IFDEF PYMAJOR2 THEN
 val pynumber_int : pyobject -> pyobject
-  END
 val pynumber_long : pyobject -> pyobject 
 val pynumber_float : pyobject -> pyobject 
 val pynumber_inplaceadd : pyobject * pyobject -> pyobject 
@@ -773,9 +753,7 @@ val pynumber_inplacesubtract : pyobject * pyobject -> pyobject
 val pynumber_inplacemultiply : pyobject * pyobject -> pyobject 
 val pynumber_inplacetruedivide : pyobject * pyobject -> pyobject 
 val pynumber_inplacefloordivide : pyobject * pyobject -> pyobject 
-  IFDEF PYMAJOR2 THEN
 val pynumber_inplacedivide : pyobject * pyobject -> pyobject 
-  END
 val pynumber_inplaceremainder : pyobject * pyobject -> pyobject 
 val pynumber_inplacelshift : pyobject * pyobject -> pyobject 
 val pynumber_inplacershift : pyobject * pyobject -> pyobject 

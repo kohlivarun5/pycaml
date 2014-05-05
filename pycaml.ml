@@ -122,9 +122,7 @@ external py_setpythonhome : string -> unit = "Py_SetPythonHome_wrapper"
 
 (* Type4 *)
 external py_isinitialized : unit -> int = "Py_IsInitialized_wrapper"
-IFDEF PYMAJOR2 THEN
 external pyeval_getrestricted : unit -> int = "PyEval_GetRestricted_wrapper"
-END
 
 (* Type5 *)
 external pyrun_simplestring : string -> int = "PyRun_SimpleString_wrapper"
@@ -174,9 +172,7 @@ external pysequence_getslice : (pyobject * int * int) -> int = "PySequence_GetSl
 (* Type14 *)
 external pymethod_function : pyobject -> pyobject = "PyMethod_Function_wrapper"
 external pymethod_self : pyobject -> pyobject = "PyMethod_Self_wrapper"
-IFDEF PYMAJOR2 THEN
 external pymethod_class : pyobject -> pyobject = "PyMethod_Class_wrapper"
-END
 external pymodule_getdict : pyobject -> pyobject = "PyModule_GetDict_wrapper"
 external pyunicode_asutf8string : pyobject -> pyobject = "PyUnicode_AsUTF8String_wrapper"
 external pyunicode_asutf16string : pyobject -> pyobject = "PyUnicode_AsUTF16String_wrapper"
@@ -193,9 +189,7 @@ external pydict_items : pyobject -> pyobject = "PyDict_Items_wrapper"
 external pydict_copy : pyobject -> pyobject = "PyDict_Copy_wrapper"
 external pysequence_tuple : pyobject -> pyobject = "PySequence_Tuple_wrapper"
 external pysequence_list : pyobject -> pyobject = "PySequence_List_wrapper"
-IFDEF PYMAJOR2 THEN
 external pynumber_int : pyobject -> pyobject = "PyNumber_Int_wrapper"
-END
 external pynumber_long : pyobject -> pyobject = "PyNumber_Long_wrapper"
 external pynumber_float : pyobject -> pyobject = "PyNumber_Float_wrapper"
 external pynumber_negative : pyobject -> pyobject = "PyNumber_Negative_wrapper"
@@ -221,9 +215,7 @@ external pyobject_getitem : pyobject * pyobject -> pyobject = "PyObject_GetItem_
 external pynumber_add : pyobject * pyobject -> pyobject = "PyNumber_Add_wrapper"
 external pynumber_subtract : pyobject * pyobject -> pyobject = "PyNumber_Subtract_wrapper"
 external pynumber_multiply : pyobject * pyobject -> pyobject = "PyNumber_Multiply_wrapper"
-IFDEF PYMAJOR2 THEN
 external pynumber_divide : pyobject * pyobject -> pyobject = "PyNumber_Divide_wrapper"
-END
 external pynumber_truedivide : pyobject * pyobject -> pyobject = "PyNumber_TrueDivide_wrapper"
 external pynumber_floordivide : pyobject * pyobject -> pyobject = "PyNumber_FloorDivide_wrapper"
 external pynumber_remainder : pyobject * pyobject -> pyobject = "PyNumber_Remainder_wrapper"
@@ -238,20 +230,16 @@ external pynumber_inplacesubtract : pyobject * pyobject -> pyobject = "PyNumber_
 external pynumber_inplacemultiply : pyobject * pyobject -> pyobject = "PyNumber_InPlaceMultiply_wrapper"
 external pynumber_inplacetruedivide : pyobject * pyobject -> pyobject = "PyNumber_InPlaceTrueDivide_wrapper"
 external pynumber_inplacefloordivide : pyobject * pyobject -> pyobject = "PyNumber_InPlaceFloorDivide_wrapper"
-IFDEF PYMAJOR2 THEN
 external pynumber_inplacedivide : pyobject * pyobject -> pyobject = "PyNumber_InPlaceDivide_wrapper"
-END
 external pynumber_inplaceremainder : pyobject * pyobject -> pyobject = "PyNumber_InPlaceRemainder_wrapper"
 external pynumber_inplacelshift : pyobject * pyobject -> pyobject = "PyNumber_InPlaceLshift_wrapper"
 external pynumber_inplacershift : pyobject * pyobject -> pyobject = "PyNumber_InPlaceRshift_wrapper"
 external pynumber_inplaceand : pyobject * pyobject -> pyobject = "PyNumber_InPlaceAnd_wrapper"
 external pynumber_inplacexor : pyobject * pyobject -> pyobject = "PyNumber_InPlaceXor_wrapper"
 external pynumber_inplaceor : pyobject * pyobject -> pyobject = "PyNumber_InPlaceOr_wrapper"
-IFDEF PYMAJOR2 THEN
 external pybytes_format : pyobject * pyobject -> pyobject = "PyBytes_Format_wrapper"
 external pystring_format : pyobject * pyobject -> pyobject = "PyBytes_Format_wrapper" (* Legacy support *)
 external pyinstance_newraw : pyobject * pyobject -> pyobject = "PyInstance_NewRaw_wrapper"
-END
 external pysequence_concat : pyobject * pyobject -> pyobject = "PySequence_Concat_wrapper"
 external pysequence_inplaceconcat : pyobject * pyobject -> pyobject = "PySequence_InPlaceConcat_wrapper"
 
@@ -286,9 +274,7 @@ external pysequence_in : (pyobject * pyobject) -> int = "PySequence_In_wrapper"
 external pysequence_index : (pyobject * pyobject) -> int = "PySequence_Index_wrapper"
 external pymapping_haskey : (pyobject * pyobject) -> int = "PyMapping_HasKey_wrapper"
 
-IFDEF PYCAML2 THEN
 external pyobject_compare : (pyobject * pyobject) -> int = "PyObject_Compare_wrapper"
-END
 
 (* Type20 *)
 external pyobject_richcomparebool : (pyobject * pyobject * int) -> int = "PyObject_RichCompareBool_wrapper"
@@ -351,9 +337,7 @@ external pydict_next : (pyobject * int) -> (pyobject * pyobject * int) option = 
 external pyint_fromlong : int64 -> pyobject = "PyInt_FromLong_wrapper"
 
 (* Type35 *)
-IFDEF PYMAJOR2 THEN
 external pyint_getmax : unit -> int64 = "PyInt_GetMax_wrapper"
-END
 external pyimport_getmagicnumber : unit -> int64 = "PyImport_GetMagicNumber_wrapper"
 
 (* Type36 *)
@@ -380,15 +364,9 @@ external pysequence_setitem : (pyobject * int * pyobject) -> int = "PySequence_S
 
 (* Type42 *)
 external pyslice_new : (pyobject * pyobject * pyobject) -> pyobject = "PySlice_New_wrapper"
-IFDEF PYMAJOR2 THEN
 external pyclass_new : (pyobject * pyobject * pyobject) -> pyobject = "PyClass_New_wrapper"
 external pyinstance_new : (pyobject * pyobject * pyobject) -> pyobject = "PyInstance_New_wrapper"
-END
-IFDEF PYMAJOR2 THEN
 external pymethod_new : (pyobject * pyobject * pyobject) -> pyobject = "PyMethod_New_wrapper"
-ELSE
-external pymethod_new : (pyobject * pyobject) -> pyobject = "PyMethod_New_wrapper"
-END
 external pyeval_callobjectwithkeywords : (pyobject * pyobject * pyobject) -> pyobject = "PyEval_CallObjectWithKeywords_wrapper"
 external pynumber_power : (pyobject * pyobject * pyobject) -> pyobject = "PyNumber_Power_wrapper"
 external pynumber_inplacepower : (pyobject * pyobject * pyobject) -> pyobject = "PyNumber_InPlacePower_wrapper"
@@ -603,8 +581,8 @@ import sys
 sys.argv=['/usr/local/bin/ipython']
 IPython.Shell.start().mainloop()
 ";;*)
-"from IPython.Shell import IPShellEmbed
-ipshell = IPShellEmbed(argv=[''])
+"import IPython
+IPython.embed()
 ipshell() # this call anywhere in your program will start IPython
 ";;
 
@@ -842,13 +820,8 @@ let type_mismatch_exception type_wanted type_here pos exn_name =
 		(pytype_name type_here)
 		exn_name))
 
-IFDEF PYMAJOR2 THEN
 let sym_match a b =
   a == b                      (* Note the == for physical equality. *)
-ELSE
-let sym_match a b =
-  a = b
-ENDIF
 
 let pill_type_mismatch_exception ?position ?exn_name wanted gotten =
   let arg_no =
@@ -1492,16 +1465,3 @@ let _py_make_powers =
 	     float_array_to_python
 	       (Array.init len (fun n -> let nn = float_of_int (n+1) in nn**pow)))
 
-let
-    _py_hypotenuse_2d =
-  python_interfaced_function
-    [|FloatType;FloatType|]
-    (fun py_args ->
-       let x = pyfloat_asdouble py_args.(0)
-       and y = pyfloat_asdouble py_args.(1) in
-         pyfloat_fromdouble (sqrt(x*.x+.y*.y)))
-in
-  register_for_python
-    [|("example_make_powers", _py_make_powers);
-      ("example_hypotenuse", _py_hypotenuse_2d);
-    |]

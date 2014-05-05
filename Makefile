@@ -1,4 +1,5 @@
-OCAMLMAKEFILE = /usr/include/OCamlMakefile
+OCAMLMAKEFILE = ./OCamlMakefile
+PYVER = 2.7
 
 PYTHON_INCLUDE_PATH = "/usr/include/python${PYVER}"
 PYTHON_LIBRARY_PATH = "/usr/$(get_libdir)/python${PYVER}"

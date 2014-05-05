@@ -24,3 +24,12 @@ To build, use something like:
   make PYVER=2.6
 
 An ebuild is included for the benefit of Gentoo users.
+
+
+-- Get pycaml from github
+-- Get OcamlBuild (optional)
+-- Install ocaml (port install ocaml)
+-- port install opam
+-- make all
+-- ocamlmktop -cclib -Lpwd -cclib libpycaml_stubs.a -custom unix.cma str.cma pycaml.cma
+-- https://docs.python.org/2.7/distutils/apiref.html for using this in your python
